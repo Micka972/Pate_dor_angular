@@ -1,3 +1,14 @@
 import { Routes } from '@angular/router';
+import { EmployeComponent } from './components/employe/employe/employe.component';
+import { ConnexionComponent } from './components/connexion/connexion.component';
+import { AdministrateurComponent } from './components/administrateur/administrateur/administrateur.component';
+import { ReservationComponent } from './components/employe/employe/reservation/reservation/reservation.component';
+import { AccueilClientComponent } from './components/employe/employe/accueil_client/accueil-client/accueil-client.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+    { path: "employe", component: EmployeComponent },
+    { path: "employe/reservation", component: ReservationComponent },
+    { path: "employe/accueil_client", component: AccueilClientComponent },
+    { path: "administrateur", component: AdministrateurComponent },
+    { path: "**", component: ConnexionComponent }
+];
