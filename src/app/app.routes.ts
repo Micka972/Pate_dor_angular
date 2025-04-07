@@ -8,7 +8,7 @@ import { AccueilClientComponent } from './components/employe/employe/accueil_cli
 export const routes: Routes = [
     { path: "employe", component: EmployeComponent },
     { path: "employe/reservation", component: ReservationComponent },
-    { path: "employe/accueil_client", component: AccueilClientComponent },
+    { path: "employe/accueil_client/:id", component: AccueilClientComponent },
     { path: "administrateur", component: AdministrateurComponent },
     { path: "**", component: ConnexionComponent }
 ];

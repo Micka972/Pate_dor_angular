@@ -1,1 +1,20 @@
-<p>accueil-client works!</p>
+<div class="table-item" *ngIf="tables_restaurant.length == 0">
+  <p class="status">
+    Il n'y a aucune table libre. Revenez demain !
+  </p>
+</div>
+<ul>
+  <li *ngFor="let table of tables_restaurant" class="table-item">
+    <div class="table-header">
+      <div class="table-number">Table n° {{ table.numeroTable }}</div>
+      <div class="table-info">
+        <div class="status">
+          {{ table.statut }} - {{ table.nbPlaces }} place(s)
+        </div>
+        <div class="reserve" *ngIf="table.statut === 'Réservée'">
+          {{ table.reservation?.prenomUtilisateur }} {{ table.reservation?.nomUtilisateur }} - {{ table.reservation?.dateReservation  | date: 'HH:mm' }} - {{ table.reservation?.nbPersonnes }} personne(s) 
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>

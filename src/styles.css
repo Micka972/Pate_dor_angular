@@ -1,348 +1,405 @@
 @charset "UTF-8";
 /* --- RESET CSS --- */
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* --- VARIABLES --- */
 :root {
-	--primary-color: #ff7f50; /* Couleur principale - orange doux */
-	--secondary-color: #2c3e50; /* Couleur secondaire - gris foncé */
-	--accent-color: #f39c12; /* Couleur d'accent - jaune doré */
-	--background-color: #f8f9fa; /* Couleur de fond - gris clair */
-	--text-color: #34495e; /* Texte principal - gris clair foncé */
-	--font-family: "Arial", sans-serif;
-	--heading-font: "Roboto", sans-serif;
-	--button-primary: #ff7f50; /* Bouton principal */
-	--button-secondary: #3498db; /* Bouton secondaire */
-	--button-tertiary: #2ecc71; /* Bouton tertiaire */
+  --primary-color: #ff7f50; /* Couleur principale - orange doux */
+  --secondary-color: #2c3e50; /* Couleur secondaire - gris foncé */
+  --accent-color: #f39c12; /* Couleur d'accent - jaune doré */
+  --reserve-color: #faba65; /* Couleur table réservée */
+  --background-color: #f8f9fa; /* Couleur de fond - gris clair */
+  --text-color: #34495e; /* Texte principal - gris clair foncé */
+  --font-family: "Arial", sans-serif;
+  --heading-font: "Roboto", sans-serif;
+  --button-primary: #ff7f50; /* Bouton principal */
+  --button-secondary: #3498db; /* Bouton secondaire */
+  --button-tertiary: #2ecc71; /* Bouton tertiaire */
 }
 
 /* --- BODY --- */
 body {
-	font-family: var(--font-family);
-	background-color: var(--background-color);
-	color: var(--text-color);
-	line-height: 1.6;
-	padding-top: 50px;
-	/* Pour éviter que le contenu se cache sous un en-tête fixe */
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding-top: 50px;
+  /* Pour éviter que le contenu se cache sous un en-tête fixe */
 }
 
 /* --- EN-TÊTE --- */
 header {
-	background-color: var(--primary-color);
-	color: white;
-	padding: 20px 0;
-	text-align: center;
-	position: fixed;
-	width: 100%;
-	top: 0;
-	left: 0;
-	z-index: 1000;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
 header h1 {
-	font-family: var(--heading-font);
-	font-size: 2.5rem;
+  font-family: var(--heading-font);
+  font-size: 2.5rem;
 }
 
 /* --- NAVIGATION --- */
 nav {
-	background-color: var(--secondary-color);
-	display: flex;
-	justify-content: space-between;
-	padding: 10px 0;
-	margin-top: 50px;
+  background-color: var(--secondary-color);
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  margin-top: 50px;
 }
 
 nav a {
-	color: white;
-	text-decoration: none;
-	margin: 0 20px;
-	font-size: 1.2rem;
-	padding: 8px 15px;
-	transition: background-color 0.3s ease;
+  color: white;
+  text-decoration: none;
+  margin: 0 20px;
+  font-size: 1.2rem;
+  padding: 8px 15px;
+  transition: background-color 0.3s ease;
 }
 
 nav a:hover {
-	background-color: var(--accent-color);
-	border-radius: 5px;
-	color: var(--text-color);
+  background-color: var(--accent-color);
+  border-radius: 5px;
+  color: var(--text-color);
 }
 
 /* --- TABLEAU DE RÉSERVATION --- */
 table {
-	width: 100%;
-	margin: 50px auto;
-	border-collapse: collapse;
-	background-color: white;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: 50px auto;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-th, td {
-	padding: 15px;
-	text-align: left;
-	border-bottom: 1px solid #ddd;
+th,
+td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
 th {
-	background-color: var(--primary-color);
-	color: white;
+  background-color: var(--primary-color);
+  color: white;
 }
 
 tr:nth-child(even) {
-	background-color: #f1f1f1;
-	/* Alternance de couleur sur les lignes paires */
+  background-color: #f1f1f1;
+  /* Alternance de couleur sur les lignes paires */
 }
 
 tr:hover {
-	background-color: #e3e3e3;
+  background-color: #e3e3e3;
 }
 
 /* --- BOUTONS --- */
 button {
-	padding: 10px 20px;
-	border: none;
-	font-size: 1rem;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-	border-radius: 5px;
+  padding: 10px 20px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
 }
 
 button.primary {
-	background-color: var(--button-primary);
-	color: white;
+  background-color: var(--button-primary);
+  color: white;
 }
 
 button.secondary {
-	background-color: var(--button-secondary);
-	color: white;
+  background-color: var(--button-secondary);
+  color: white;
 }
 
 button.tertiary {
-	background-color: var(--button-tertiary);
-	color: white;
+  background-color: var(--button-tertiary);
+  color: white;
 }
 
 button:hover {
-	color: var(--secondary-color);
-	filter: brightness(1.1); /* Effet d'illumination au survol */
+  color: var(--secondary-color);
+  filter: brightness(1.1); /* Effet d'illumination au survol */
 }
 
 /* --- LIENS --- */
 a {
-	color: var(--primary-color);
-	text-decoration: none;
-	transition: color 0.3s ease;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 a:hover {
-	color: var(--secondary-color);
-	filter: brightness(1.2);
+  color: var(--secondary-color);
+  filter: brightness(1.2);
 }
 
 .link-primary {
-	display: flex;
-	justify-content: center;
-	padding: 10px 20px;
-	border: none;
-	font-size: 1rem;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-	border-radius: 5px;
-	background-color: red;
-	color: white;
-	width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+  background-color: red;
+  color: white;
+  width: 100%;
 }
 
 .link-secondary {
-	padding: 10px 20px;
-	border: none;
-	font-size: 1rem;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-	border-radius: 5px;
-	background-color: var(--button-secondary);
-	color: white;
+  padding: 10px 20px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+  background-color: var(--button-secondary);
+  color: white;
 }
 
 .link-tertiary {
-	padding: 10px 20px;
-	border: none;
-	font-size: 1rem;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
-	border-radius: 5px;
-	background-color: var(--button-tertiary);
-	color: white;
+  padding: 10px 20px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+  background-color: var(--button-tertiary);
+  color: white;
 }
 
 /* --- PIED DE PAGE --- */
 footer {
-	background-color: var(--secondary-color);
-	color: white;
-	text-align: center;
-	padding: 5px;
-	position: fixed;
-	width: 100%;
-	bottom: 0;
+  background-color: var(--secondary-color);
+  color: white;
+  text-align: center;
+  padding: 5px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
 }
 
 /* --- FORMULAIRE --- */
 form {
-	background-color: white;
-	padding: 30px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	border-radius: 10px;
-	max-width: 600px;
-	margin: 50px auto;
+  background-color: white;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 50px auto;
 }
 
 label {
-	font-size: 1.1rem;
-	margin-bottom: 10px;
-	display: block;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  display: block;
 }
 
-input, select, textarea {
-	width: 100%;
-	padding: 10px;
-	margin: 10px 0;
-	border: 1px solid #ccc;
-	border-radius: 5px;
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 textarea {
-	resize: vertical;
-	min-height: 100px;
+  resize: vertical;
+  min-height: 100px;
 }
 
 input[type="submit"] {
-	background-color: var(--primary-color);
-	color: white;
-	border: none;
-	padding: 12px;
-	font-size: 1rem;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 input[type="submit"]:hover {
-	color: var(--secondary-color);
-	background-color: var(--accent-color);
+  color: var(--secondary-color);
+  background-color: var(--accent-color);
 }
 
 /* --- STYLE DE LA CASE À COCHER --- */
 .checkbox-wrapper {
-	display: flex;
-	align-items: center;
-	gap: 10px;
-	font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
 }
 
 .checkbox-wrapper input[type="checkbox"] {
-	display: none; /* Cacher l'élément checkbox réel */
+  display: none; /* Cacher l'élément checkbox réel */
 }
 
 .checkbox-wrapper label {
-	position: relative;
-	cursor: pointer;
-	padding-left: 30px; /* Espacement à gauche pour la case à cocher */
-	font-size: 1.1rem; /* Pour correspondre à la taille du texte */
+  position: relative;
+  cursor: pointer;
+  padding-left: 30px; /* Espacement à gauche pour la case à cocher */
+  font-size: 1.1rem; /* Pour correspondre à la taille du texte */
 }
 
 .checkbox-wrapper label::before {
-	content: "";
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 20px;
-	height: 20px;
-	border: 2px solid var(--secondary-color);
-	/* Utilisation de la couleur secondaire pour le bord */
-	border-radius: 5px;
-	/* Coins arrondis pour correspondre au style général */
-	background-color: white;
-	transition: background-color 0.3s ease, border-color 0.3s ease;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--secondary-color);
+  /* Utilisation de la couleur secondaire pour le bord */
+  border-radius: 5px;
+  /* Coins arrondis pour correspondre au style général */
+  background-color: white;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.checkbox-wrapper input[type="checkbox"]:checked+label::before {
-	background-color: var(--primary-color);
-	/* Case cochée avec la couleur principale */
-	border-color: var(--primary-color);
+.checkbox-wrapper input[type="checkbox"]:checked + label::before {
+  background-color: var(--primary-color);
+  /* Case cochée avec la couleur principale */
+  border-color: var(--primary-color);
 }
 
-.checkbox-wrapper input[type="checkbox"]:checked+label::after {
-	content: "";
-	position: absolute;
-	left: 5px;
-	top: 5px;
-	width: 10px;
-	height: 10px;
-	background-color: white;
-	border-radius: 3px;
-	transition: background-color 0.3s ease;
+.checkbox-wrapper input[type="checkbox"]:checked + label::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
 }
 
 /* --- RESPONSIVENESS --- */
-@media ( max-width : 768px) {
-	header h1 {
-		font-size: 2rem;
-	}
-	nav {
-		flex-direction: column;
-	}
-	nav a {
-		margin: 10px 0;
-	}
-	table, th, td {
-		font-size: 0.9rem;
-	}
-	footer {
-		font-size: 0.9rem;
-	}
-	form {
-		padding: 20px;
-	}
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  nav {
+    flex-direction: column;
+  }
+  nav a {
+    margin: 10px 0;
+  }
+  table,
+  th,
+  td {
+    font-size: 0.9rem;
+  }
+  footer {
+    font-size: 0.9rem;
+  }
+  form {
+    padding: 20px;
+  }
 }
 
 /* --- TITRES --- */
 h2 {
-	text-align: center;
-	margin: 20px;
+  text-align: center;
+  margin: 20px;
 }
 
 /* --- LOGO --- */
 .logo {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: fixed;
-	top: 150px;
-	left: 50%;
-	transform: translateX(-50%);
-	width: fit-content;
-	margin: auto;
-	z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
+  margin: auto;
+  z-index: -1;
 }
 
 /* --- GESTION DES MESSAGES *** */
 .error-message {
-	background-color: red;
-	color: white;
-	text-align: center;
+  background-color: red;
+  color: white;
+  text-align: center;
 }
 
 .success-message {
-	background-color: green;
-	color: white;
-	text-align: center;
+  background-color: green;
+  color: white;
+  text-align: center;
 }
 
 .utilisateur-connecte {
-	background-color: var(--secondary-color);
-	color: var(--primary-color);
-	text-align: center;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  text-align: center;
+}
+
+/* Style pour liste des tables */
+.table-item {
+  background-color: var(--accent-color);
+  padding: 15px;
+  margin: 10px auto auto;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  box-sizing: border-box;
+}
+
+.table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.table-number {
+  background-color: white;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.table-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  margin-left: 20px;
+}
+
+.status {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.reserve {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  background-color: var(--reserve-color);
+  border-radius: 5px;
+  width: 50%;
+  margin: auto;
 }
