@@ -3,7 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { TableRestaurantService } from '../../../../../services/table-restaurant.service';
 import { TableRestaurant } from '../../../../../interfaces/table-restaurant';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ReservationService } from '../../../../../services/reservation.service';
 import { Reservation } from '../../../../../interfaces/reservation';
 import { TableReservation } from '../../../../../interfaces/table-reservation';
@@ -11,7 +11,7 @@ import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-accueil-client',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './accueil-client.component.html',
   styleUrl: './accueil-client.component.css',
 })
@@ -94,19 +94,15 @@ export class AccueilClientComponent {
               ...table,
               statut: 'Réservée',
               reservation: {
+                idReservation: firstReservation.idReservation,
                 nomUtilisateur: firstReservation.nomUtilisateur,
                 prenomUtilisateur: firstReservation.prenomUtilisateur,
                 dateReservation: firstReservation.dateReservation,
                 nbPersonnes: firstReservation.nbPersonnes,
-                heureReservation: new Date(
-                  firstReservation.dateReservation
-                ).toLocaleTimeString(),
               },
             };
           } else {
-            console.warn(
-              `Reservation data is missing for table ${table.idTable}`
-            );
+            console.warn(`Aucune donnée pour la table ${table.idTable}`);
           }
         }
 
@@ -116,5 +112,13 @@ export class AccueilClientComponent {
         };
       });
     });
+  }
+
+  getRouterLink(table: TableReservation) {
+    if (table.statut === 'Réservée') {
+      return ['/employe/accueil_client/present', table.reservation?.idReservation];
+    } else {
+      return ['/employe/accueil_client/nouvelle', table.idTable];
+    }
   }
 }
