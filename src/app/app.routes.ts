@@ -6,6 +6,7 @@ import { ReservationComponent } from './components/employe/employe/reservation/r
 import { AccueilClientComponent } from './components/employe/employe/accueil_client/accueil-client/accueil-client.component';
 
 export const routes: Routes = [
+    { path: "accueil", component: ConnexionComponent},
     { path: "employe", component: EmployeComponent },
     { path: "employe/reservation", component: ReservationComponent },
     { path: "employe/accueil_client", component: AccueilClientComponent },
