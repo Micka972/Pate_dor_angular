@@ -13,8 +13,8 @@ export class ReservationComponent {
   reservations : Reservation[] = [];
 
   constructor(private service: ReservationService) {
-    service.get_reservations().subscribe(response => {
-      this.reservations = response;
-    });
+    //service.get_reservations().subscribe(response => {
+    //  this.reservations = response;
+    //});
   }
 }

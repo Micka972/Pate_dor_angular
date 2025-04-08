@@ -12,11 +12,9 @@ import { ConnexionService } from '../../services/connexion.service';
   styleUrl: './connexion.component.css'
 })
 export class ConnexionComponent {
-  constructor(public titleService: Title) {}
-
   form: FormGroup;
 
-  constructor(private authService: ConnexionService, private router: Router) {
+  constructor(private authService: ConnexionService, private router: Router, public titleService: Title) {
     this.form = new FormGroup({
       login: new FormControl(''),
       mdp: new FormControl('')
