@@ -6,14 +6,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { TableReservation } from '../../../../../../interfaces/table-reservation';
 
 @Component({
-  selector: 'app-present',
+  selector: 'app-nouveau',
   imports: [CommonModule, MatDialogModule, MatButtonModule],
-  templateUrl: './present.component.html',
-  styleUrl: './present.component.css'
+  templateUrl: './nouveau.component.html',
+  styleUrl: './nouveau.component.css'
 })
-export class PresentComponent {
+export class NouveauComponent {
+
   table: TableReservation;
-  constructor(private popupService: PopupService, private dialogRef: MatDialogRef<PresentComponent>, @Inject(MAT_DIALOG_DATA) data: TableReservation) {
+  constructor(private popupService: PopupService, private dialogRef: MatDialogRef<NouveauComponent>, @Inject(MAT_DIALOG_DATA) data: TableReservation) {
     this.table = data;
   }
 

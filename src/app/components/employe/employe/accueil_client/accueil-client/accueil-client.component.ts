@@ -8,10 +8,14 @@ import { ReservationService } from '../../../../../services/reservation.service'
 import { Reservation } from '../../../../../interfaces/reservation';
 import { TableReservation } from '../../../../../interfaces/table-reservation';
 import { forkJoin } from 'rxjs';
+import { PresentComponent } from '../present/present/present.component';
+import { MatDialog, MatDialogConfig, MatDialogModule } from '@angular/material/dialog';
+import { NouveauComponent } from '../nouveau/nouveau/nouveau.component';
 
 @Component({
   selector: 'app-accueil-client',
-  imports: [CommonModule, RouterModule],
+  standalone: true,
+  imports: [CommonModule, RouterModule, MatDialogModule],
   templateUrl: './accueil-client.component.html',
   styleUrl: './accueil-client.component.css',
 })
@@ -24,7 +28,8 @@ export class AccueilClientComponent {
     public titleService: Title,
     private tableService: TableRestaurantService,
     private reservationservice: ReservationService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -114,11 +119,15 @@ export class AccueilClientComponent {
     });
   }
 
-  getRouterLink(table: TableReservation) {
+  openDialog(table: TableReservation) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = table;
+    dialogConfig.width = '50vw';
+    dialogConfig.height = '50vh';
     if (table.statut === 'Réservée') {
-      return ['/employe/accueil_client/present', table.reservation?.idReservation];
+      this.dialog.open(PresentComponent, dialogConfig);      
     } else {
-      return ['/employe/accueil_client/nouvelle', table.idTable];
+      this.dialog.open(NouveauComponent, dialogConfig);      
     }
   }
 }

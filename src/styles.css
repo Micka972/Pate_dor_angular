@@ -413,3 +413,69 @@ h2 {
   width: 50%;
   margin: auto;
 }
+
+/* --- Personnalisation de la popup --- */
+.mat-mdc-dialog-container {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease-in-out;
+  text-align: center;
+}
+
+/* Animation d'apparition du popup */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Titre du popup */
+.mat-mdc-dialog-title {
+  font-family: var(--heading-font);
+  font-size: 3em !important;
+  color: var(--text-color);
+  padding-bottom: 10px;  
+  margin-bottom: 30px;
+}
+
+/* Contenu du popup */
+.mat-mdc-dialog-content, .mat-mdc-dialog-actions {
+  font-size: 1.5rem !important;;
+  color: var(--text-color);
+}
+
+/* Boutons du popup */
+.mat-mdc-dialog-container button {
+  background-color: var(--button-tertiary);
+  color: var(--background-color);
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.mat-mdc-dialog-actions button {
+  background-color: var(--button-secondary);
+  color: var(--background-color);
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.mat-mdc-dialog-container button:hover, .mat-mdc-dialog-actions button:hover {
+  background-color: var(--button-primary);
+  color: var(--text-color);
+}

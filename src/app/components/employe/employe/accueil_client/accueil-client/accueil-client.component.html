@@ -5,7 +5,7 @@
 </div>
 <ul>
   <li *ngFor="let table of tables_restaurant" class="table-item">
-    <a class="table-header" [routerLink]="getRouterLink(table)" >
+    <a class="table-header" (click)="openDialog(table)" >
       <div class="table-number">Table n° {{ table.numeroTable }}</div>
       <div class="table-info">
         <div class="status">
