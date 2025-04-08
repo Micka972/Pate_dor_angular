@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConnexionService } from '../../services/connexion.service';
@@ -11,6 +12,7 @@ import { ConnexionService } from '../../services/connexion.service';
   styleUrl: './connexion.component.css'
 })
 export class ConnexionComponent {
+  constructor(public titleService: Title) {}
 
   form: FormGroup;
 
@@ -19,6 +21,10 @@ export class ConnexionComponent {
       login: new FormControl(''),
       mdp: new FormControl('')
     });
+  }
+
+  ngOnInit() {
+    this.titleService.setTitle("La Pâte d'Or");
   }
 
   login() {
@@ -33,5 +39,4 @@ export class ConnexionComponent {
         });
     }
   }
-
 }
