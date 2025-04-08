@@ -1,0 +1,15 @@
+.my-toast {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all .5s;
+    border: solid 1px green;
+    border-radius: 8px;
+    padding: 0px 2px 0px 2px;
+
+}
+
+.alert {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
