@@ -13,16 +13,7 @@ export class ConnexionService {
 
   login(username: string, password: string): Observable<any> {
     const body = { nom: username, mdp: password };
-/*
-    const token = localStorage.getItem('token');
-*/
-/*
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Accept': 'text/plain',
-     'Authorization': token ? 'Bearer ' + token : ''
-    });
-    */
+
     return this.http.post(this.apiUrl, body, {responseType: 'text'});
   }
 }
