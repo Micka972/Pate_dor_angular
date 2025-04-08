@@ -1,1 +1,16 @@
-<p>connexion works!</p>
+<form [formGroup]="form" (ngSubmit)="login()">
+    <fieldset>
+        <legend>Connexion</legend>
+        <div class="form-field">
+            <label>Login :</label>
+            <input type="text" formControlName="login" placeholder="Login" required>
+        </div>
+        <div class="form-field">
+            <label>Mot de passe :</label>
+            <input type="password" formControlName="mdp" placeholder="Mot de passe" required>
+        </div>
+    </fieldset>
+    <div class="form-buttons">
+        <button class="button button-primary" type="submit">Envoyer</button>
+    </div>
+</form>
