@@ -25,4 +25,5 @@ export class NouveauComponent {
   closeDialog(): void {
     this.dialogRef.close();
   }
+  
 }
