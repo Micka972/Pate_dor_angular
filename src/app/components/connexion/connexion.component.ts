@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConnexionService } from '../../services/connexion.service';
+import { TokenService } from '../../services/token.service';
 
 @Component({
   selector: 'app-connexion',
@@ -22,8 +23,9 @@ export class ConnexionComponent {
   constructor(
     private authService: ConnexionService,
     private router: Router,
-    public titleService: Title
-  ) {
+    public titleService: Title,
+    private tokenService: TokenService
+    ) {
     this.form = new FormGroup({
       login: new FormControl(''),
       mdp: new FormControl(''),
@@ -31,7 +33,7 @@ export class ConnexionComponent {
   }
 
   ngOnInit() {
-    this.titleService.setTitle("La Pâte d'Or");
+    this.titleService.setTitle('Connexion');
   }
 
   login() {
@@ -39,10 +41,12 @@ export class ConnexionComponent {
       const { login, mdp } = this.form.value;
 
       this.authService.login(login, mdp).subscribe((response) => {
-        console.log('Connexion réussie', response); // A remplacer
+        console.log('Connexion réussie', response);
         localStorage.setItem('token', response);
-
-        this.router.navigate(['/accueil']);
+        localStorage.setItem('login', login);
+        const idRestaurant = this.tokenService.getIdRestaurant(response);
+        localStorage.setItem('idRestaurant', idRestaurant?.toString() ?? '');
+        this.router.navigate(['/employe']);
       });
     }
   }

@@ -11,7 +11,6 @@ export const routes: Routes = [
     { path: "employe", component: EmployeComponent },
     { path: "employe/reservation", component: ReservationComponent },
     { path: "employe/accueil_client/:id", component: AccueilClientComponent },
-    { path: "employe/accueil_client/present/:id", component: PresentComponent },
     { path: "administrateur", component: AdministrateurComponent },
     { path: "**", component: ConnexionComponent }
 ];

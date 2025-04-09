@@ -54,13 +54,10 @@ export class AccueilClientComponent {
     }).subscribe(({ tables, reservations }) => {
       this.reservations = reservations as Reservation[];
       const today = new Date();
-      console.log('Today:', today);
-
       this.tables_restaurant = (tables as TableRestaurant[]).map((table) => {
         // Filtrer les réservations pour aujourd'hui pour cette table
         const reservationsForToday = this.reservations.filter((res) => {
           const resDate = new Date(res.dateReservation);
-          console.log(`Reservation date for table ${table.idTable}:`, resDate);
 
           // Comparer seulement la date (pas l'heure) et ignorer les réservations du passé si elles ne sont pas encore terminées
           return (
@@ -71,11 +68,6 @@ export class AccueilClientComponent {
           );
         });
 
-        console.log(
-          `Reservations for table ${table.idTable}:`,
-          reservationsForToday
-        );
-
         if (reservationsForToday.length > 0) {
           // Trier par heure croissante (plus tôt d'abord)
           const firstReservation = reservationsForToday.sort((a, b) => {
@@ -83,11 +75,6 @@ export class AccueilClientComponent {
             const bTime = new Date(b.dateReservation).getTime();
             return aTime - bTime;
           })[0]; // Prendre la première après le tri
-
-          console.log(
-            `First reservation for table ${table.idTable}:`,
-            firstReservation
-          );
 
           // Si la première réservation est valide
           if (
