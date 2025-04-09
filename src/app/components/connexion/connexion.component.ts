@@ -25,7 +25,7 @@ export class ConnexionComponent {
     private router: Router,
     public titleService: Title,
     private tokenService: TokenService
-  ) {
+    ) {
     this.form = new FormGroup({
       login: new FormControl(''),
       mdp: new FormControl(''),
@@ -46,9 +46,12 @@ export class ConnexionComponent {
         localStorage.setItem('login', login);
         const idRestaurant = this.tokenService.getIdRestaurant(response);
         localStorage.setItem('idRestaurant', idRestaurant?.toString() ?? '');
-
         this.router.navigate(['/employe']);
       });
     }
+  }
+
+  logout() {
+    localStorage.removeItem('token');
   }
 }

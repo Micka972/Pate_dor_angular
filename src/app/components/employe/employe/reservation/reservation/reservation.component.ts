@@ -13,7 +13,7 @@ export class ReservationComponent {
   reservations : Reservation[] = [];
 
   constructor(private service: ReservationService) {
-    //service.get_reservations().subscribe(response => {
+    // service.getReservationsFutures(this.idRestaurant).subscribe(response => {
     //  this.reservations = response;
     //});
   }
