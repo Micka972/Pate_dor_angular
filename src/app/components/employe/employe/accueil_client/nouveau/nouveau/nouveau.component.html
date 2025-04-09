@@ -3,9 +3,9 @@
 <div mat-dialog-content>
   <br>
   <p>Nombre de personnes</p>
-  <input type="number" [value]="1" [max]="table.nbPlaces + 1" [min]="1">
+  <input type="number" name="nbPers" id="nbPers" [(ngModel)]="nbPers" [value]="table.reservation?.nbPersonnes" [max]="table.nbPlaces + 1" [min]="1">
   <br>
-  <button mat-button >Confirmer</button>
+  <button mat-button (click)="valider()">Confirmer</button>
 </div>
 <br><hr>
 <div mat-dialog-actions>  

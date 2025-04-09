@@ -49,7 +49,7 @@ export class PresentComponent {
             (response) => {
               console.log('Réservation mise à jour avec succès!', response);
               this.dialogRef.close(); // ferme le popup
-            this.router.navigate(['/employe']); // redirection
+              this.router.navigate(['/employe']); // redirection
             },
             (error) => {
               console.error(
@@ -65,5 +65,4 @@ export class PresentComponent {
       console.log('Erreur : Nombre de personnes invalide');
     }
   }
-  
 }

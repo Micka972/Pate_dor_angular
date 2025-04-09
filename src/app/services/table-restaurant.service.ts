@@ -10,6 +10,6 @@ export class TableRestaurantService {
   constructor(private client : HttpClient) { }
 
   getTablesLibres(id_restaurant : number) {
-    return this.client.get(this.API_URL + id_restaurant);
+    return this.client.get(this.API_URL+"libres/" + id_restaurant);
   }
 }
