@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConnexionService } from '../../services/connexion.service';
+import { TokenService } from '../../services/token.service';
 import { ToastService } from '../../services/toast.service';
 
 @Component({
@@ -23,9 +24,10 @@ export class ConnexionComponent {
   constructor(
     private authService: ConnexionService,
     private router: Router,
-    private toast_service: ToastService,
     public titleService: Title,
-  ) {
+    private tokenService: TokenService,
+    private toastService: ToastService
+    ) {
     this.form = new FormGroup({
       login: new FormControl(''),
       mdp: new FormControl(''),
@@ -33,28 +35,25 @@ export class ConnexionComponent {
   }
 
   ngOnInit() {
-    this.titleService.setTitle("La Pâte d'Or");
+    this.titleService.setTitle('Connexion');
   }
 
   login() {
     if (this.form.valid) {
       const { login, mdp } = this.form.value;
 
-      this.authService.login(login, mdp).subscribe({
-        next: (response) => {
-          this.toast_service.show("Connexion réussie !", "success");
-          localStorage.setItem('token', response);
-          this.router.navigate(['/accueil']);
-        },
-        error: (err) => {
-          console.error('Erreur de connexion :', err);
-          this.toast_service.show("Échec de la connexion. Vérifiez vos identifiants.", "error");
-        }
+      this.authService.login(login, mdp).subscribe((response) => {
+        console.log('Connexion réussie', response);
+        localStorage.setItem('token', response);
+        localStorage.setItem('login', login);
+        const idRestaurant = this.tokenService.getIdRestaurant(response);
+        localStorage.setItem('idRestaurant', idRestaurant?.toString() ?? '');
+        this.router.navigate(['/employe']);
       });
     } else {
       error: (err: any) => {
         console.error('Erreur de connexion :', err);
-        this.toast_service.show("Échec de la connexion. Vérifiez vos identifiants.", "error");
+        this.toastService.show("Échec de la connexion. Vérifiez vos identifiants.", "error");
       }
     }
   }
