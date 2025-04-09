@@ -20,6 +20,6 @@ export class ToastService {
 
     setTimeout(() => {
       this._visible[0] = false;
-    }, 300000);
+    }, 3000);
   }
 }
