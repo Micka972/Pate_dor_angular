@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Table {{ table.numeroTable }}</h1>
+<hr>
+<div mat-dialog-content>
+  <br>
+  <p>Nombre de personnes</p>
+  <input type="number" name="nbPers" id="nbPers" [(ngModel)]="nbPers" [value]="table.reservation?.nbPersonnes" [max]="table.nbPlaces + 1" [min]="1">
+  <br>
+  <button mat-button (click)="valider()">Confirmer</button>
+</div>
+<br><hr>
+<div mat-dialog-actions>  
+  <button mat-button (click)="closeDialog()">Fermer</button>
+</div>
