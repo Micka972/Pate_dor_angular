@@ -10,6 +10,7 @@ import {
 import { Router } from '@angular/router';
 import { ConnexionService } from '../../services/connexion.service';
 import { TokenService } from '../../services/token.service';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-connexion',
@@ -24,7 +25,8 @@ export class ConnexionComponent {
     private authService: ConnexionService,
     private router: Router,
     public titleService: Title,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private toastService: ToastService
     ) {
     this.form = new FormGroup({
       login: new FormControl(''),
@@ -48,6 +50,11 @@ export class ConnexionComponent {
         localStorage.setItem('idRestaurant', idRestaurant?.toString() ?? '');
         this.router.navigate(['/employe']);
       });
+    } else {
+      error: (err: any) => {
+        console.error('Erreur de connexion :', err);
+        this.toastService.show("Échec de la connexion. Vérifiez vos identifiants.", "error");
+      }
     }
   }
 
