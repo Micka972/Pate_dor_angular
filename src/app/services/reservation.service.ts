@@ -11,6 +11,6 @@ export class ReservationService {
   constructor(private client : HttpClient) { }
 
   getReservationsFutures(id_restaurant : number) {
-    return this.client.get(this.API_URL + id_restaurant);
+    return this.client.get<Reservation[]>(this.API_URL + id_restaurant);
   }
 }

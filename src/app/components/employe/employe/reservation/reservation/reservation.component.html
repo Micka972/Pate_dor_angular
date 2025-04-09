@@ -1,1 +1,11 @@
 <p>reservation works!</p>
+<div *ngIf="reservations.length === 0">Aucune réservation à afficher.</div>
+
+<div *ngFor="let reservation of reservations">
+<div class="reservation">
+    <p>Table : {{ reservation.idTable }}</p>
+    <p>ID de réservation : {{ reservation.idReservation }}</p>
+    <p>Nom du client : {{ reservation.nomUtilisateur }}</p>
+    <p>Date : {{ reservation.dateReservation | date: 'dd/MM/yyyy' }}</p>   
+  </div>
+</div>

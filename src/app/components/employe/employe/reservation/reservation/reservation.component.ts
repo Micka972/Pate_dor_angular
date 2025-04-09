@@ -11,10 +11,16 @@ import { Reservation } from '../../../../../interfaces/reservation';
 })
 export class ReservationComponent {
   reservations : Reservation[] = [];
+  idRestaurant = 1;
+
 
   constructor(private service: ReservationService) {
-    // service.getReservationsFutures(this.idRestaurant).subscribe(response => {
-    //  this.reservations = response;
-    //});
+    console.log('id du restaurant :', this.idRestaurant);
+    
+    service.getReservationsFutures(this.idRestaurant).subscribe(response => {
+      console.log('reservations : ', response );
+      
+    this.reservations = response;
+    });
   }
 }
