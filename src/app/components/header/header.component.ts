@@ -18,6 +18,7 @@ export class HeaderComponent {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('login');
+    localStorage.removeItem('idRestaurant');
     this.router.navigate(['/']);
   }
 }
