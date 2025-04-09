@@ -42,19 +42,19 @@ export class ConnexionComponent {
 
       this.authService.login(login, mdp).subscribe({
         next: (response) => {
-          this.toast_service.show("Connexion réussie !");
+          this.toast_service.show("Connexion réussie !", "success");
           localStorage.setItem('token', response);
           this.router.navigate(['/accueil']);
         },
         error: (err) => {
           console.error('Erreur de connexion :', err);
-          this.toast_service.show("Échec de la connexion. Vérifiez vos identifiants.");
+          this.toast_service.show("Échec de la connexion. Vérifiez vos identifiants.", "error");
         }
       });
     } else {
       error: (err: any) => {
         console.error('Erreur de connexion :', err);
-        this.toast_service.show("Échec de la connexion. Vérifiez vos identifiants.");
+        this.toast_service.show("Échec de la connexion. Vérifiez vos identifiants.", "error");
       }
     }
   }
