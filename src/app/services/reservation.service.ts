@@ -12,7 +12,7 @@ export class ReservationService {
 
   // Récupérer les réservations futures
   getReservationsFutures(id_restaurant : number) {
-    return this.client.get(this.API_URL + id_restaurant);
+    return this.client.get<Reservation[]>(this.API_URL + id_restaurant);
   }
 
   // Mettre à jour une réservation avec PUT
