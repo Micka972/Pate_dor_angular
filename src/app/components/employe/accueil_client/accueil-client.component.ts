@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { TableRestaurantService } from '../../../../../services/table-restaurant.service';
-import { TableRestaurant } from '../../../../../interfaces/table-restaurant';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { ReservationService } from '../../../../../services/reservation.service';
-import { Reservation } from '../../../../../interfaces/reservation';
-import { TableReservation } from '../../../../../interfaces/table-reservation';
 import { forkJoin } from 'rxjs';
-import { PresentComponent } from '../present/present/present.component';
 import { MatDialog, MatDialogConfig, MatDialogModule } from '@angular/material/dialog';
-import { NouveauComponent } from '../nouveau/nouveau/nouveau.component';
+import { Reservation } from '../../../interfaces/reservation';
+import { TableReservation } from '../../../interfaces/table-reservation';
+import { TableRestaurant } from '../../../interfaces/table-restaurant';
+import { ReservationService } from '../../../services/reservation.service';
+import { TableRestaurantService } from '../../../services/table-restaurant.service';
+import { NouveauComponent } from './nouveau/nouveau.component';
+import { PresentComponent } from './present/present.component';
 
 @Component({
   selector: 'app-accueil-client',

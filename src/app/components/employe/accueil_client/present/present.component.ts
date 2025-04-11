@@ -1,16 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, Inject } from '@angular/core';
-import { PopupService } from '../../../../../../services/popup.service';
 import {
   MAT_DIALOG_DATA,
   MatDialogModule,
   MatDialogRef,
 } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { TableReservation } from '../../../../../../interfaces/table-reservation';
 import { FormsModule } from '@angular/forms';
-import { ReservationService } from '../../../../../../services/reservation.service';
 import { Router } from '@angular/router';
+import { TableReservation } from '../../../../interfaces/table-reservation';
+import { PopupService } from '../../../../services/popup.service';
+import { ReservationService } from '../../../../services/reservation.service';
 
 @Component({
   selector: 'app-present',

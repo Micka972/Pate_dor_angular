@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { ReservationService } from '../../../../../services/reservation.service';
 import { CommonModule } from '@angular/common';
-import { Reservation } from '../../../../../interfaces/reservation';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { Reservation } from '../../../interfaces/reservation';
+import { ReservationService } from '../../../services/reservation.service';
 
 @Component({
   selector: 'app-reservation',
