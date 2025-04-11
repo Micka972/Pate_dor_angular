@@ -2,34 +2,76 @@ import { Component } from '@angular/core';
 import { ReservationService } from '../../../../../services/reservation.service';
 import { CommonModule } from '@angular/common';
 import { Reservation } from '../../../../../interfaces/reservation';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-reservation',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './reservation.component.html',
-  styleUrl: './reservation.component.css'
+  styleUrl: './reservation.component.css',
 })
 export class ReservationComponent {
-  reservations : Reservation[] = [];
+  reservations: Reservation[] = [];
+  todayReservations: Reservation[] = [];
+  futureReservationsByDate: Map<string, Reservation[]> = new Map();
   idRestaurant: number = 0;
 
-
-  constructor(private service: ReservationService) {
-    const idRestaurantString = localStorage.getItem('idRestaurant');
-    this.idRestaurant = idRestaurantString ? +idRestaurantString : 0;
-  }
+  constructor(
+    public titleService: Title,
+    private reservationservice: ReservationService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    console.log('id du restaurant :', this.idRestaurant);
+    this.titleService.setTitle('Réservations');
+    this.route.paramMap.subscribe((params) => {
+      const id = params.get('id');
+      if (id) {
+        this.idRestaurant = +id;
+        this.loadData();
+      }
+    });
+  }
 
-    if (this.idRestaurant) {
-      this.service.getReservationsFutures(this.idRestaurant).subscribe(response => {
-        console.log('Réservations reçues :', response);
-        this.reservations = response;
+  loadData() {
+    this.reservationservice
+      .getReservationsFutures(this.idRestaurant)
+      .subscribe((result) => {
+        this.reservations = result;
+        this.filterReservations();
       });
-    } else {
-      console.warn('Aucun idRestaurant trouvé');
+  }
+
+  filterReservations() {
+    const today = new Date();
+    this.todayReservations = [];
+    this.futureReservationsByDate.clear();
+
+    for (let res of this.reservations) {
+      const resDate = new Date(res.dateReservation);
+      const isToday = resDate.toDateString() === today.toDateString();
+
+      if (isToday) {
+        this.todayReservations.push(res);
+      } else {
+        const options: Intl.DateTimeFormatOptions = {
+          weekday: 'long',
+          day: 'numeric',
+          month: 'long',
+        };
+        const formattedDate = resDate.toLocaleDateString('fr-FR', options);
+
+        if (!this.futureReservationsByDate.has(formattedDate)) {
+          this.futureReservationsByDate.set(formattedDate, []);
+        }
+
+        this.futureReservationsByDate.get(formattedDate)!.push(res);
+      }
     }
-  
+  }
+
+  get futureReservationDates(): string[] {
+    return Array.from(this.futureReservationsByDate.keys());
   }
 }

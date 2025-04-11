@@ -9,7 +9,7 @@ import { PresentComponent } from './components/employe/employe/accueil_client/pr
 export const routes: Routes = [
     { path: "accueil", component: ConnexionComponent},
     { path: "employe", component: EmployeComponent },
-    { path: "employe/reservation", component: ReservationComponent },
+    { path: "employe/reservation/:id", component: ReservationComponent },
     { path: "employe/accueil_client/:id", component: AccueilClientComponent },
     { path: "administrateur", component: AdministrateurComponent },
     { path: "**", component: ConnexionComponent }

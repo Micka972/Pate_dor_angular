@@ -1,15 +1,33 @@
-<H1>Aujourd'hui</H1>
-<div *ngIf="reservations.length === 0">Aucune réservation à afficher.</div>
-
-<div *ngFor="let reservation of reservations">
-<div class="reservation">
-  <div class=" reservation-header">
-    <p class="id-table">{{ reservation.idTable }}</p>
-    <p class="nom-utilisateut">Nom : {{ reservation.nomUtilisateur }}</p>
-  </div>
-    <p class="nb-personnes">{{ reservation.nbPersonnes }} personne·s</p>
-    <p class="date-reservation">{{ reservation.dateReservation | date: 'HH:mm' }}</p>   
+<h1>Aujourd'hui</h1>
+<div *ngIf="todayReservations.length === 0">Aucune réservation à afficher.</div>
+<div *ngFor="let reservation of todayReservations">
+  <div class="table-item">
+    <div class="table-header">
+      <div class="table-number">Table n°{{ reservation.idTable }}</div>
+      <div class="table-info">
+        <div class="status">
+          {{ reservation.prenomUtilisateur }} {{ reservation.nomUtilisateur }} ( {{ reservation.nbPersonnes }} personne(s) )</div>
+        <div class="reserve">
+          {{ reservation.dateReservation | date : "HH:mm" }}
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<H1>Réservations futures</H1>
+<div *ngFor="let date of futureReservationDates">
+  <h1>{{ date | titlecase }}</h1>
+  <div *ngFor="let reservation of futureReservationsByDate.get(date)">
+    <div class="table-item">
+      <div class="table-header">
+        <div class="table-number">Table n°{{ reservation.idTable }}</div>
+        <div class="table-info">
+          <div class="status">
+            {{ reservation.prenomUtilisateur }} {{ reservation.nomUtilisateur }} ( {{ reservation.nbPersonnes }} personne(s) )</div>
+          <div class="reserve">
+            {{ reservation.dateReservation | date : "HH:mm" }}
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
