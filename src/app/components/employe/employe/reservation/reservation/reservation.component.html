@@ -1,11 +1,15 @@
-
+<H1>Aujourd'hui</H1>
 <div *ngIf="reservations.length === 0">Aucune réservation à afficher.</div>
 
 <div *ngFor="let reservation of reservations">
 <div class="reservation">
-    <p>Table : {{ reservation.idTable }}</p>
-    <p>ID de réservation : {{ reservation.idReservation }}</p>
-    <p>Nom du client : {{ reservation.nomUtilisateur }}</p>
-    <p>Date : {{ reservation.dateReservation | date: 'dd/MM/yyyy' }}</p>   
+  <div class=" reservation-header">
+    <p class="id-table">{{ reservation.idTable }}</p>
+    <p class="nom-utilisateut">Nom : {{ reservation.nomUtilisateur }}</p>
+  </div>
+    <p class="nb-personnes">{{ reservation.nbPersonnes }} personne·s</p>
+    <p class="date-reservation">{{ reservation.dateReservation | date: 'HH:mm' }}</p>   
   </div>
 </div>
+
+<H1>Réservations futures</H1>

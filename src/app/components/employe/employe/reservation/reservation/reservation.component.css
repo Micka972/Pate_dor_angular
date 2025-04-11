@@ -1,0 +1,12 @@
+.reservation {
+    border: solid 1px;
+    border-radius: 5px;
+    background-color: var(--accent-color);
+    margin: 50px;
+    text-align: center;
+}
+
+.id-table {
+    background-color: var(--background-color);
+
+}
