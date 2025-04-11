@@ -1,1 +1,4 @@
-<p>service works!</p>
+<h1>Tables</h1>
+<div class="accueil-container">
+    <a class="accueil-item" *ngFor="let table of tables_restaurant" (click)="openDialog(table)">Table n°{{ table.idTable}}</a>
+</div>

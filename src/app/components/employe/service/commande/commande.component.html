@@ -1,0 +1,22 @@
+<h2>Commande de la table {{ table.idTable }}</h2>
+<div *ngIf="restaurant">
+  <div *ngFor="let categorie of getCategories(restaurant.carte.plats)">
+    <h3>{{ categorie }}</h3>
+
+    <div
+      *ngFor="
+        let plat of getPlatsParCategorie(restaurant.carte.plats, categorie)
+      "
+    >
+      <div class="plat">
+        <p>{{ plat.nom }} - {{ plat.prix | currency : "EUR" }}</p>
+        <input
+          type="number"
+          min="0"
+          [value]="quantites[plat.id] || 0"
+          (input)="updateQuantite(plat.id, $event)"
+        />
+      </div>
+    </div>
+  </div>
+</div>
