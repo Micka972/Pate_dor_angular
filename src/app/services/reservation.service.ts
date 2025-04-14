@@ -27,8 +27,6 @@ export class ReservationService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    console.log("res :" + reservation.nbPersonnes);
-    console.log("head :" + headers.getAll);
     return this.client.post<Reservation>(this.API_URL, reservation, { headers });
   }
 }

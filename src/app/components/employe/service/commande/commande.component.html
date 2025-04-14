@@ -1,15 +1,11 @@
-<h2>Commande de la table {{ table.idTable }}</h2>
-<div *ngIf="restaurant">
+<!-- Affichage si restaurant et commandeUpdate sont prêts -->
+<div *ngIf="restaurant && commandeUpdate?.idCommande; else loading">
   <div *ngFor="let categorie of getCategories(restaurant.carte.plats)">
     <h3>{{ categorie }}</h3>
 
-    <div
-      *ngFor="
-        let plat of getPlatsParCategorie(restaurant.carte.plats, categorie)
-      "
-    >
+    <div *ngFor="let plat of getPlatsParCategorie(restaurant.carte.plats, categorie)">
       <div class="plat">
-        <p>{{ plat.nom }} - {{ plat.prix | currency : "EUR" }}</p>
+        <p>{{ plat.nom }} - {{ plat.prix | currency : 'EUR' }}</p>
         <input
           type="number"
           min="0"
@@ -19,4 +15,11 @@
       </div>
     </div>
   </div>
+
+  <button (click)="terminerCommande()">Terminer la commande</button>
 </div>
+
+<!-- Contenu affiché en attendant que tout soit prêt -->
+<ng-template #loading>
+  <p>Chargement de la commande...</p>
+</ng-template>

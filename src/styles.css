@@ -535,3 +535,14 @@ h2 {
   color: var(--background-color);
   transform: scale(0.90);
 }
+
+.plat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+}
+
+.plat input {
+  width: 20%;
+}
